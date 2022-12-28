@@ -4,7 +4,7 @@ import upVotes from "../../Assets/upvote.svg"
 import downVotes from "../../Assets/downVote.svg"
 import "./Questions.css"
 import Avatar from '../../Avatar/Avatar'
-import DisplayAnswer from './DisplayAnswer'
+// import DisplayAnswer from './DisplayAnswer'
 function QuestionsDetails() {
     const { id } = useParams();
     var questionsList = [{ 
@@ -43,16 +43,18 @@ function QuestionsDetails() {
         askedOn: "jan 1",
         userId: 1,
     }]
+   
   return (
-    <div>
+  
       
         <div className="question-details-page">
   {questionsList === null ? (
     <p>Loading...</p>
-  ) : (
+  ) : 
     <>
-      {questionsList.filter(question => question._id === id).map(question => {
-       return (
+    // change has been made here question._id => question.id
+    {questionsList.filter(question => question.id === id).map(question => (
+       
         <div key={question._id}>
           <section className="question-details-container">
             <h1>{question.questionTitle}</h1>
@@ -92,7 +94,7 @@ function QuestionsDetails() {
                   <section>
                       <h3>
                           {question.noOfAnswers} answers
-                      <DisplayAnswer key = {question._id} question = {question}/>
+                      {/* <DisplayAnswer key = {question.id} question = {question}/> */}
                       </h3>
                   </section>
               )
@@ -114,13 +116,15 @@ function QuestionsDetails() {
               </p>
           </section>
         </div>
-      );      
-      })}
+            
+      ))}
+
+   
     </>
-  )}
+  }  
 </div>
 
-    </div>
+   
    
   )
 }
