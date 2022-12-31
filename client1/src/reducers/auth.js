@@ -13,3 +13,4 @@ const authReducer = (state={data:null},action) =>{
 }
 // in order to provide action auth file is used
 export default authReducer
+// when auth is called it gets data from the website and sending to api
